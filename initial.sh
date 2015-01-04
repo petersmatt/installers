@@ -8,7 +8,7 @@ PASS=$2
 MANAGER=$3
 PORT=$4
 
-useradd $USER
+useradd $NEWUSER
 echo "$NEWUSER:$PASS" | chpasswd
 
 if [ -f "/etc/sudoers.tmp" ]; then
@@ -47,5 +47,6 @@ service suricata start
 
 ##configure the management port
 iptables -I INPUT -p tcp ! -s $MANAGER --dport $PORT -j DROP
-sudo sed -i 's/Port 22/Port $PORT/' /etc/ssh/sshd_config
+sed -i 's/Port 22/Port $PORT/' /etc/ssh/sshd_config
+sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/' /etc/ssh/sshd_config
 service ssh restart
