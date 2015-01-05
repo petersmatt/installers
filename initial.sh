@@ -9,7 +9,8 @@ MANAGER=$3
 PORT=$4
 
 useradd $NEWUSER
-echo "$NEWUSER:$PASS" | chpasswd
+CHANGEPASS="$NEWUSER:$PASS"
+echo $CHANGEPASS | chpasswd
 
 if [ -f "/etc/sudoers.tmp" ]; then
     exit 1
