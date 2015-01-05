@@ -2,7 +2,7 @@
 PASS=$1
 PORT=$2
 
-apt-get install -y python-dev openssl python-openssl python-pyasn1 python-twisted subversion
+apt-get install -y python-dev authbind openssl python-openssl python-pyasn1 python-twisted subversion
 
 #setup authbind
 useradd kippo
@@ -14,9 +14,9 @@ chown $USERNAME /etc/authbind/byport/$PORT
 chmod 777 /etc/authbind/byport/$PORT
 
 #make directory and set perms
-mkdir /opt/kippo
+mkdir /opt/hp/kippo
 chown kippo /opt/hp/kippo
 
 
 #download kippo files
-svn checkout http://kippo.googlecode.com/svn/trunk/ /opt/kippo
+svn checkout http://kippo.googlecode.com/svn/trunk/ /opt/hp/kippo
