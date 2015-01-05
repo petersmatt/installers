@@ -20,3 +20,7 @@ chown kippo /opt/hp/kippo
 
 #download kippo files
 svn checkout http://kippo.googlecode.com/svn/trunk/ /opt/hp/kippo
+sudo chown -R kippo /opt/hp/kippo
+touch /opt/hp/kippo/default.banner
+
+sed -i "s/twistd/authbind --deep twistd/" /opt/hp/kippo/start.sh
