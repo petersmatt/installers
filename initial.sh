@@ -48,6 +48,6 @@ service suricata start
 
 ##configure the management port
 iptables -I INPUT -p tcp ! -s $MANAGER --dport $PORT -j DROP
-sed -i 's/Port 22/Port $PORT/' /etc/ssh/sshd_config
+sed -i "s/Port 22/Port $PORT/" /etc/ssh/sshd_config
 sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/' /etc/ssh/sshd_config
 service ssh restart
